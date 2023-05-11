@@ -18,4 +18,5 @@ export default {
         not_found: 'route not found',
         internal_error: 'internal server error',
     },
+    credential_invalid: 'Invalid Credentials',
 };

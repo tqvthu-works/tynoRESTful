@@ -1,8 +1,7 @@
 import { inject, injectable } from 'inversify';
-import { AuthService } from '../../Services/AuthService';
+import { AuthService } from '@app/Services/AuthService';
 import { Request, Response } from 'express';
 import { ApiController } from './ApiController';
-import 'module-alias/register';
 
 @injectable()
 export class AuthController extends ApiController {
@@ -12,22 +11,7 @@ export class AuthController extends ApiController {
         super();
         this.service = service;
     }
-    public async install(
-        request: Request,
-        response: Response,
-    ): Promise<Response> {
-        return this.response(
-            response,
-            await this.service.buildInstallUrl(request),
-        );
-    }
-    public async authCallback(
-        request: Request,
-        response: Response,
-    ): Promise<Response> {
-        return this.response(
-            response,
-            await this.service.handleAuthCallback(request),
-        );
+    public async auth(request: Request, response: Response): Promise<Response> {
+        return this.response(response, await this.service.auth(request));
     }
 }

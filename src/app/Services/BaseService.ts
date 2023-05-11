@@ -1,15 +1,15 @@
 import { default as httpStatus } from 'http-status';
 import * as Sentry from '@sentry/node';
 import { injectable } from 'inversify';
-
+import { HTTP_STATUS_CODE } from '@constant/common';
 @injectable()
 export class BaseService {
-    private status?: boolean;
-    private httpCode?: (typeof httpStatus)[keyof typeof httpStatus];
-    private message?: string;
-    private data?: any;
-    private sentryId?: string;
-    private errors?: any;
+    private status: boolean;
+    private httpCode: number;
+    private message: string;
+    private data: any;
+    private sentryId: string;
+    private errors: any;
     public sentry: typeof Sentry;
 
     constructor() {
@@ -47,8 +47,8 @@ export class BaseService {
         return this;
     }
 
-    public getHttpCode(): (typeof httpStatus)[keyof typeof httpStatus] {
-        return this.httpCode;
+    public getHttpCode(): number {
+        return this.httpCode ?? HTTP_STATUS_CODE.OK;
     }
 
     /**

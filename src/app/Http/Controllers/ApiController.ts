@@ -3,6 +3,7 @@ import { BaseService } from '../../Services/BaseService';
 import * as httpStatus from 'http-status';
 import { injectable } from 'inversify';
 import { apiConfiguration } from '../../../config/api';
+import { HTTP_STATUS_CODE } from '@constant/common';
 
 @injectable()
 export class ApiController {
@@ -36,7 +37,6 @@ export class ApiController {
             result['errors'] = data.getErrors();
             result['sentry_id'] = data.getSentryId();
         }
-
-        return res.status(httpStatus.OK).json(result);
+        return res.status(data.getHttpCode()).json(result);
     }
 }
