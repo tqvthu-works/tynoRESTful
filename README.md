@@ -1,6 +1,6 @@
-# Shopify App Backend API
+# RESTful API with Laravel Structure
 
-This is a backend API project built with Node.js and TypeScript. It is used as the backend for a Shopify app.
+This is a backend RESTful API project built with Node.js and TypeScript. It is used as the backend for a Shopify app.
 
 ## Prerequisites
 
