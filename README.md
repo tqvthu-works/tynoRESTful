@@ -1,6 +1,6 @@
 # RESTful API with Laravel Structure
 
-This is a backend RESTful API project built with Node.js and TypeScript. It is used as the backend for a Shopify app.
+RESTful API project built with Node.js + TypeScript + Mysql + Sequelize + Inversify.
 
 ## Prerequisites
 
