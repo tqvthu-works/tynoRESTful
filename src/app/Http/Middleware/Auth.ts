@@ -1,16 +1,18 @@
 import { NextFunction, Request, Response, RequestHandler } from 'express';
 import jwt from 'jsonwebtoken';
-import { parse as parseUrl } from 'url';
-import { AnyObject } from '@core/contract';
 import * as httpStatus from 'http-status';
+import { jwtConfig } from '@config/jwt';
+import { UserAttributes } from '@app/Models/User';
 
 export const Auth = async (
     req: Request,
     res: Response,
     next: NextFunction,
 ): Promise<Response | void> => {
-    const token = req.headers.authorization?.replace('Bearer ', '') || '';
     try {
+        const token = req.headers.authorization?.replace('Bearer ', '') || '';
+        const data = jwt.verify(token, jwtConfig.secret);
+        req.user = data as UserAttributes;
         return next();
     } catch (err) {
         return res.status(httpStatus.UNAUTHORIZED).json({

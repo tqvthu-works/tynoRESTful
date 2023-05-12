@@ -1,6 +1,7 @@
 import { Model, DataTypes, Optional } from 'sequelize';
 import { sequelize } from '../../database/index';
 import { injectable } from 'inversify';
+
 export interface UserAttributes {
     id: number;
     username: string | null;
