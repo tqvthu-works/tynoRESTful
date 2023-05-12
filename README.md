@@ -1,6 +1,6 @@
 # RESTful API with Laravel Structure
 
-RESTful API project built with Node.js + TypeScript + Mysql + Sequelize + Inversify.
+RESTful API project built with Node.js, TypeScript, Mysql, Sequelize, Inversify, Express, Sentry.
 
 ## Prerequisites
 
