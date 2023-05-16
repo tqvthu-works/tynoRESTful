@@ -31,7 +31,6 @@ export class AuthService extends BaseService {
                 username: request.body.username,
             },
         });
-        console.log(user);
         if (!user) {
             this.setStatus(false);
             this.setHttpCode(HTTP_STATUS_CODE.NOT_FOUND);
@@ -49,7 +48,7 @@ export class AuthService extends BaseService {
         delete user.dataValues.password;
         const token: string = jwt.sign(user.dataValues, jwtConfig.secret, {
             algorithm: jwtConfig.algorithm,
-            expiresIn: jwtConfig.expiration
+            expiresIn: jwtConfig.expiration,
         });
         this.setStatus(true);
         this.setData({ token: token });
