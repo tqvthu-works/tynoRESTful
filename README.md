@@ -25,6 +25,8 @@ This is a backend RESTful API project built with Node.js and TypeScript. It is u
 ```npm run cmd```
 ##### To get into console, use:
 ```npm run tinker```
+###### Usage
+- Get a service instance: ```global.container.get('<service_class_name>')```
 ##### To run a worker, use:
 - Production: ```npm run queue:work --queue={queueName}```
 - Local: ```npm run queue:listen --queue={queueName}```

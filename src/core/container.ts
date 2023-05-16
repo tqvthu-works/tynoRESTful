@@ -9,7 +9,7 @@ export class Container {
         files.forEach((file) => {
             const [className, _] = file.split('.js');
             const service = require(`@app/Services/${className}`)[className];
-            container.bind(service).toSelf();
+            container.bind(className).to(service);
         });
     }
 }
