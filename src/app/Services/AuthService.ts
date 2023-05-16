@@ -49,6 +49,7 @@ export class AuthService extends BaseService {
         delete user.dataValues.password;
         const token: string = jwt.sign(user.dataValues, jwtConfig.secret, {
             algorithm: jwtConfig.algorithm,
+            expiresIn: jwtConfig.expiration
         });
         this.setStatus(true);
         this.setData({ token: token });

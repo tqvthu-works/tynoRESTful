@@ -1,3 +1,4 @@
+import { APP_ENVS } from '@constant/app';
 import { Sequelize, Options } from 'sequelize';
 
 export class Database {
@@ -5,8 +6,11 @@ export class Database {
 
     public static getInstance(): Sequelize {
         if (!Database.instance) {
-            const dbConfig = require('../config/database');
-            Database.instance = new Sequelize(dbConfig as Options);
+            const dbConfig = require('../config/database') as Options;
+            if (process.env.APP_ENV != APP_ENVS.LOCAL) {
+                dbConfig.logging = false;
+            }
+            Database.instance = new Sequelize(dbConfig);
         }
         return Database.instance;
     }

@@ -1,10 +1,8 @@
 import Express from 'express';
-import { AuthController } from '@app/Http/Controllers/AuthController';
-import { handler } from '@core/http/controller-handler';
+import AuthController from '@app/Http/Controllers/AuthController';
 import { AuthRequest } from '@app/Http/Request/AuthRequest';
 import { Auth } from '@app/Http/Middleware/Auth';
 
-const authController = container.resolve<AuthController>(AuthController);
 const AuthRouter = Express.Router();
 
 /**
@@ -21,8 +19,8 @@ AuthRouter.use(
 ); /* users prefix */
 
 /* Place to define routes */
-AuthRouter.post('/register', handler(authController, 'register'));
-AuthRouter.post('/login', handler(authController, 'login'));
-AuthRouter.get('/user', Auth, handler(authController, 'user'));
+AuthRouter.post('/register', ActionHandler(AuthController, 'register'));
+AuthRouter.post('/login', ActionHandler(AuthController, 'login'));
+AuthRouter.get('/user', Auth, ActionHandler(AuthController, 'user'));
 
 export default AuthRouter;
