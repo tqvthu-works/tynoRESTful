@@ -2,9 +2,10 @@ import i18next from 'i18next';
 import { ApiRouter } from '@routes/api';
 import express from 'express';
 import { appConfig } from '@config/app';
-import { default as HTTP_STATUS_CODE } from 'http-status';
+import { HTTP_STATUS_CODE } from '@constant/common';
 import * as Sentry from '@sentry/node';
 import { APP_ENVS } from '@constant/app';
+
 
 export class ExpressApp {
     public static load(app: express.Express, router: express.Router): void {

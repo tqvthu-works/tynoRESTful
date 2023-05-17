@@ -5,7 +5,7 @@ import {
 } from 'express-validator';
 import { Request, Response, NextFunction } from 'express';
 import { HTTP_STATUS_CODE } from '@constant/common';
-import { apiConfiguration } from '@config/api';
+import { apiConfig } from '@config/api';
 
 export abstract class Validator {
     private validations: ValidationChain[];
@@ -36,7 +36,7 @@ export abstract class Validator {
             perPage &&
             (isNaN(perPage) ||
                 perPage == 0 ||
-                perPage > apiConfiguration.max_per_page)
+                perPage > apiConfig.max_per_page)
         ) {
             return response.status(HTTP_STATUS_CODE.UNPROCESSABLE_ENTITY).json({
                 status: false,
