@@ -1,7 +1,9 @@
 import 'module-alias/register';
+import { config } from 'dotenv';
+config();
+
 import { Handler } from './Exceptions/Handler';
 Handler.handle();
-
 const args = process.argv.slice(2);
 const [connection] = args;
 const queue = process.env.npm_config_queue;

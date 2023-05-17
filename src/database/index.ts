@@ -1,6 +1,5 @@
 import { APP_ENVS } from '@constant/app';
 import { Sequelize, Options } from 'sequelize';
-
 export class Database {
     private static instance: Sequelize;
 

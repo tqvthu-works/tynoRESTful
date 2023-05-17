@@ -18,7 +18,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/tqvthu-works/shopify_restful.git"
+        "url": "https://github.com/tqvthu-works/tynoRESTful.git"
     },
     "keywords": [
         "restful",
@@ -27,7 +27,7 @@
     "author": "tqvthu.works",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/tqvthu-works/shopify_restful/issues"
+        "url": "https://github.com/tqvthu-works/tynoRESTful.git/issues"
     },
     "_moduleAliases": {
         "@config": "./dist/config",
