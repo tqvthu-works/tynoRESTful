@@ -10,7 +10,7 @@ export class Container {
             const filePath = `${directoryPath}/${file}`;
             const fileStats = fs.statSync(filePath);
             if (fileStats.isDirectory()) {
-              return;
+                return;
             }
             const [className, _] = file.split('.js');
             const model = require(`@app/Models/${className}`)[className];

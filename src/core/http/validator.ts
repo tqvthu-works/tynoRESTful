@@ -34,9 +34,7 @@ export abstract class Validator {
             request.query['per_page'] ?? request.body['per_page'] ?? null;
         if (
             perPage &&
-            (isNaN(perPage) ||
-                perPage == 0 ||
-                perPage > apiConfig.max_per_page)
+            (isNaN(perPage) || perPage == 0 || perPage > apiConfig.max_per_page)
         ) {
             return response.status(HTTP_STATUS_CODE.UNPROCESSABLE_ENTITY).json({
                 status: false,
