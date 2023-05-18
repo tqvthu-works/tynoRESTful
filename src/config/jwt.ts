@@ -1,5 +1,4 @@
-import * as dotenv from 'dotenv';
-dotenv.config();
+import 'dotenv/config';
 
 export const jwtConfig = {
     secret: process.env.APP_KEY,
