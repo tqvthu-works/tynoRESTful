@@ -10,8 +10,10 @@ import jwt from 'jsonwebtoken';
 
 @injectable()
 export class AuthService extends BaseService {
-    constructor() {
+    private userModel: typeof User;
+    constructor(@inject('User') userModel: typeof User) {
         super();
+        this.userModel = userModel;
     }
     public async register(request: Request): Promise<this> {
         const password: string = bcrypt.hashSync(request.body.password, 10);
@@ -19,14 +21,14 @@ export class AuthService extends BaseService {
             username: request.body.username,
             password: password,
         };
-        const user = await User.create(data);
+        const user = await this.userModel.create(data);
         this.setStatus(true);
         this.setData(user);
         return this;
     }
 
     public async login(request: Request): Promise<this> {
-        const user = await User.findOne({
+        const user = await this.userModel.findOne({
             where: {
                 username: request.body.username,
             },

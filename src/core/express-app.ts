@@ -6,7 +6,6 @@ import { HTTP_STATUS_CODE } from '@constant/common';
 import * as Sentry from '@sentry/node';
 import { APP_ENVS } from '@constant/app';
 
-
 export class ExpressApp {
     public static load(app: express.Express, router: express.Router): void {
         app.use(express.json({ limit: '500kb' }));
