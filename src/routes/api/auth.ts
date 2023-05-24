@@ -5,18 +5,10 @@ import { Auth } from '@app/Http/Middleware/Auth';
 
 const AuthRouter = Express.Router();
 
-/**
- * Set groups
- * Set Request Validator Middleware
- * Set middleware
- */
-AuthRouter.use(
-    '/auth',
-    (req, res, next) => {
-        new AuthRequest(req, res, next).handle();
-    },
-    AuthRouter,
-); /* users prefix */
+
+AuthRouter.use((req, res, next) => {
+    new AuthRequest(req, res, next).handle();
+});
 
 /* Place to define routes */
 AuthRouter.post('/register', ActionHandler(AuthController, 'register'));
