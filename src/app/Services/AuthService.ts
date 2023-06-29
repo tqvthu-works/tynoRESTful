@@ -16,7 +16,10 @@ export class AuthService extends BaseService {
         this.userModel = userModel;
     }
     public async register(request: Request): Promise<this> {
-        const password: string = bcrypt.hashSync(request.body.password, 10);
+        const password: string = bcrypt.hashSync(
+            request.body.password.toString(),
+            10,
+        );
         const data: UserCreationAttributes = {
             username: request.body.username,
             password: password,

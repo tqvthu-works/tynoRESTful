@@ -1,10 +1,9 @@
 import Express from 'express';
-import AuthController from '@app/Http/Controllers/AuthController';
+import { AuthController } from '@app/Http/Controllers/AuthController';
 import { AuthRequest } from '@app/Http/Request/AuthRequest';
 import { Auth } from '@app/Http/Middleware/Auth';
 
 const AuthRouter = Express.Router();
-
 
 AuthRouter.use((req, res, next) => {
     new AuthRequest(req, res, next).handle();

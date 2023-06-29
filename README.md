@@ -1,24 +1,29 @@
 # RESTful API with Laravel Structure
-
 RESTful API project built with Node.js, TypeScript, Mysql, Sequelize, Inversify, Express, Sentry.
-
 ## Prerequisites
 
 - Node.js 16 or greater
 - TypeScript
 
 ## Getting Started
-
 ##### To install the project, run:
-- clone ```.env.example to .env```
+- clone ```.env.example to .env```. input your configuration
 - ```npm install```
+- ```npx sequelize db:migrate```
+- ```npm run local```
+- ```Import postman collection into your project from tynoRESTful.postman_collection.json file```
+
+##### Generate app key
+- npm run key:generate
+Use this key for APP_KEY in .env file
 ##### Migration:
 - Make new migration
-```npx sequelize migration:create --name=<name>```
+    ```npx sequelize migration:create --name=<name>```
 - Migrate DB
-```npm run sequelize db:migrate```
+    ```npm run sequelize db:migrate```
 - Help
-```npx sequelize --help```
+    ```npx sequelize --help```
+###Some Command line
 ##### To start the web server for local development, run:
 ```npm run local```
 ##### To run a command line, use:
