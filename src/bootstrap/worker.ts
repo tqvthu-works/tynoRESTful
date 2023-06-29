@@ -3,6 +3,7 @@ import './boot';
 import Queue, { Job } from 'bull';
 import { redisConfig } from '@config/redis';
 import { REDIS } from '@constant/redis';
+import { queues } from '@config/redis';
 import { ConsoleLog } from '@app/Helpers/ConsoleLog';
 import { IJobData } from '@core/contract';
 
@@ -18,8 +19,7 @@ export class Worker {
             `Processing jobs from the [${this.queue}] queue`,
             false,
         );
-        const connections: string[] = Object.values(REDIS);
-        if (!connections.includes(this.connection)) {
+        if (!queues.includes(this.connection)) {
             ConsoleLog.debug(
                 `No connection with name ${this.connection} found!` +
                     `. Therefore, the worker is using [${REDIS.CONNECTION_DEFAULT}] connection`,

@@ -4,7 +4,7 @@ import { Request, Response } from 'express';
 import { ApiController } from './ApiController';
 
 @injectable()
-class AuthController extends ApiController {
+export class AuthController extends ApiController {
     protected service: AuthService;
 
     constructor(@inject('AuthService') service: AuthService) {
@@ -28,4 +28,3 @@ class AuthController extends ApiController {
         return this.response(response, await this.service.user(request));
     }
 }
-export default container.resolve<AuthController>(AuthController);
