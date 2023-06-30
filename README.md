@@ -6,8 +6,9 @@ RESTful API project built with Node.js, TypeScript, Mysql, Sequelize, Inversify,
 - TypeScript
 
 ## Getting Started
+
 ##### To install the project, run:
-- clone ```.env.example to .env```. input your configuration
+- clone ```.env.example to .env```
 - ```npm install```
 - ```npx sequelize db:migrate```
 - ```npm run local```
@@ -18,20 +19,21 @@ RESTful API project built with Node.js, TypeScript, Mysql, Sequelize, Inversify,
 Use this key for APP_KEY in .env file
 ##### Migration:
 - Make new migration
-    ```npx sequelize migration:create --name=<name>```
+```npx sequelize migration:create --name=<name>```
 - Migrate DB
-    ```npm run sequelize db:migrate```
+```npm run sequelize db:migrate```
 - Help
-    ```npx sequelize --help```
-###Some Command line
+```npx sequelize --help```
 ##### To start the web server for local development, run:
 ```npm run local```
 ##### To run a command line, use:
 ```npm run cmd```
 ##### To get into console, use:
 ```npm run tinker```
-###### Usage
-- Get a service instance: ```global.container.get('<service_class_name>')```
+###### Some example in tinker
+- Get container: ```const container = global.container```
+- Get service: ```const shopService = container.get('ShopService')```
+- Get binding: ```const Shop = global.container.get('Shop'); const shop = await Shop.findOne({where: {shopify_domain: 'foo.myshopify.com'}})```
 ##### To run a worker, use:
 - Production: ```npm run queue:work --queue={queueName}```
 - Local: ```npm run queue:listen --queue={queueName}```
