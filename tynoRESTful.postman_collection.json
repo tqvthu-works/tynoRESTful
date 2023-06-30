@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "d7cb5fcd-dbd8-4e70-987f-03282a0dd87d",
+		"name": "tynoRESTful",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11843629"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Profile",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsImNyZWF0ZWRfYXQiOiIyMDIzLTA2LTI5VDA4OjA1OjE1LjAwMFoiLCJ1cGRhdGVkX2F0IjoiMjAyMy0wNi0yOVQwODowNToxNS4wMDBaIiwiaWF0IjoxNjg4MDI2MzAyLCJleHAiOjE2ODgxMTI3MDJ9.3b9ceoxaDBT7M5Q7WqOoFiCtPEETEs8h8rLiLlwEulY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"user"
+					]
+				},
+				"description": "Response Example\n\n``` json\n{\n    \"status\": true,\n    \"data\": {\n        \"id\": 1,\n        \"username\": \"admin\",\n        \"created_at\": \"2023-06-29T08:05:15.000Z\",\n        \"updated_at\": \"2023-06-29T08:05:15.000Z\",\n        \"iat\": 1688026302,\n        \"exp\": 1688112702\n    }\n}\n\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"123456\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				},
+				"description": "Response example:\n\n``` json\n{\n    \"status\": true,\n    \"data\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsImNyZWF0ZWRfYXQiOiIyMDIzLTA2LTI5VDA4OjA1OjE1LjAwMFoiLCJ1cGRhdGVkX2F0IjoiMjAyMy0wNi0yOVQwODowNToxNS4wMDBaIiwiaWF0IjoxNjg4MDI2MzAyLCJleHAiOjE2ODgxMTI3MDJ9.3b9ceoxaDBT7M5Q7WqOoFiCtPEETEs8h8rLiLlwEulY\"\n    }\n}\n\n```"
+			},
+			"response": []
+		}
+	]
+}
