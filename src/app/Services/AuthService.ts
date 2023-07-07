@@ -16,13 +16,10 @@ export class AuthService extends BaseService {
         this.userModel = userModel;
     }
     public async register(request: Request): Promise<this> {
-        const password: string = bcrypt.hashSync(
-            request.body.password.toString(),
-            10,
-        );
+        const password: string = bcrypt.hashSync(request.body.password.toString(), 10);
         const data: UserCreationAttributes = {
             username: request.body.username,
-            password: password,
+            password: password
         };
         const user = await this.userModel.create(data);
         this.setStatus(true);
@@ -33,18 +30,15 @@ export class AuthService extends BaseService {
     public async login(request: Request): Promise<this> {
         const user = await this.userModel.findOne({
             where: {
-                username: request.body.username,
-            },
+                username: request.body.username
+            }
         });
         if (!user) {
             this.setStatus(false);
             this.setHttpCode(HTTP_STATUS_CODE.NOT_FOUND);
             return this;
         }
-        const isMatch = bcrypt.compareSync(
-            request.body.password,
-            user.password,
-        );
+        const isMatch = bcrypt.compareSync(request.body.password, user.password);
         if (!isMatch) {
             this.setStatus(false);
             this.setHttpCode(HTTP_STATUS_CODE.BAD_REQUEST);
@@ -53,7 +47,7 @@ export class AuthService extends BaseService {
         delete user.dataValues.password;
         const token: string = jwt.sign(user.dataValues, jwtConfig.secret, {
             algorithm: jwtConfig.algorithm,
-            expiresIn: jwtConfig.expiration,
+            expiresIn: jwtConfig.expiration
         });
         this.setStatus(true);
         this.setData({ token: token });

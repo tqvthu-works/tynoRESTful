@@ -10,15 +10,9 @@ export interface UserAttributes {
     updated_at: Date | null;
 }
 
-export type UserCreationAttributes = Optional<
-    UserAttributes,
-    'id' | 'created_at' | 'updated_at'
->;
+export type UserCreationAttributes = Optional<UserAttributes, 'id' | 'created_at' | 'updated_at'>;
 @injectable()
-export class User
-    extends Model<UserAttributes, UserCreationAttributes>
-    implements UserAttributes
-{
+export class User extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
     public id: number;
     public username: string;
     public password: string;
@@ -31,24 +25,24 @@ User.init(
         id: {
             type: DataTypes.BIGINT.UNSIGNED,
             autoIncrement: true,
-            primaryKey: true,
+            primaryKey: true
         },
         username: {
             type: DataTypes.STRING(100),
-            allowNull: true,
+            allowNull: true
         },
         password: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: false
         },
         created_at: {
             type: DataTypes.DATE,
-            allowNull: true,
+            allowNull: true
         },
         updated_at: {
             type: DataTypes.DATE,
-            allowNull: true,
-        },
+            allowNull: true
+        }
     },
     {
         // Other model options go here
@@ -56,6 +50,6 @@ User.init(
         modelName: 'User', // We need to choose the model name,
         tableName: 'users',
         createdAt: 'created_at',
-        updatedAt: 'updated_at',
-    },
+        updatedAt: 'updated_at'
+    }
 );

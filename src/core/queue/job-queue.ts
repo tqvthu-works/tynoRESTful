@@ -29,18 +29,16 @@ export abstract class JobQueue<P = any> {
     }
     public dispatch(): void {
         const queue: Queue.Queue = queues[this.queue ?? QUEUE.DEFAULT];
-        const jobHandlerPath = this.path
-            ? `${this.path}/${this.constructor.name}`
-            : this.constructor.name;
+        const jobHandlerPath = this.path ? `${this.path}/${this.constructor.name}` : this.constructor.name;
         const jobData: IJobData<P> = {
             job_path: jobHandlerPath,
-            data: this.payload,
+            data: this.payload
         };
         const option: JobOptions = {
             attempts: this.tries ?? 1,
             timeout: this.timeout ?? 0,
             removeOnComplete: this.removeOnCompleted ?? true,
-            removeOnFail: this.removeOnFail ?? false,
+            removeOnFail: this.removeOnFail ?? false
         };
         if (this.delayDateTime) {
             option.delay = this.delayDateTime.valueOf() - moment().valueOf();

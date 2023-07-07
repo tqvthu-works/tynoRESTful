@@ -14,29 +14,25 @@ export class AuthRequest extends Validator {
         const chains: ValidationChain[] = [
             body('username')
                 .notEmpty()
-                .withMessage(
-                    i18next.t('validation.required', { attribute: 'username' }),
-                )
+                .withMessage(i18next.t('validation.required', { attribute: 'username' }))
                 .bail()
                 .custom(async (value, { req }) => {
                     const user = await User.findOne({
                         where: { username: value },
-                        attributes: ['id'],
+                        attributes: ['id']
                     });
                     if (user) {
                         return Promise.reject(
                             i18next.t('validation.exists', {
-                                attribute: 'username',
-                            }),
+                                attribute: 'username'
+                            })
                         );
                     }
                     return true;
                 }),
             body('password')
                 .notEmpty()
-                .withMessage(
-                    i18next.t('validation.required', { attribute: 'password' }),
-                ),
+                .withMessage(i18next.t('validation.required', { attribute: 'password' }))
         ];
 
         return chains;

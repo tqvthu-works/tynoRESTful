@@ -24,21 +24,21 @@ export class ExpressApp {
             err,
             _: express.Request,
             res: express.Response,
-            next: express.NextFunction,
+            next: express.NextFunction
         ): express.Response | express.NextFunction => {
             const status = err.statusCode || 500;
             if (process.env.APP_ENV == APP_ENVS.LOCAL) {
                 return res.status(status).json({
                     status: false,
-                    message: err?.stack ?? err.message,
+                    message: err?.stack ?? err.message
                 });
             }
             Sentry.captureMessage(err.message, {
-                level: 'error',
+                level: 'error'
             });
             return res.status(status).json({
                 status: false,
-                message: i18next.t('custom.http.internal_error'),
+                message: i18next.t('custom.http.internal_error')
             });
         };
 
@@ -47,7 +47,7 @@ export class ExpressApp {
         router.use((_, res: express.Response) => {
             return res.status(HTTP_STATUS_CODE.NOT_FOUND).json({
                 code: HTTP_STATUS_CODE.NOT_FOUND,
-                message: i18next.t('custom.http.not_found'),
+                message: i18next.t('custom.http.not_found')
             });
         });
     }
