@@ -1,8 +1,4 @@
-import {
-    ValidationChain,
-    validationResult,
-    ValidationError,
-} from 'express-validator';
+import { ValidationChain, validationResult, ValidationError } from 'express-validator';
 import { Request, Response, NextFunction } from 'express';
 import { HTTP_STATUS_CODE } from '@constant/common';
 import { apiConfig } from '@config/api';
@@ -24,21 +20,13 @@ export abstract class Validator {
      * common validate for all feature
      * @return {Response}          [description]
      */
-    public static validate(
-        request: Request,
-        response: Response,
-        next: NextFunction,
-    ): Response | any {
+    public static validate(request: Request, response: Response, next: NextFunction): Response | any {
         /* prevent large per_page*/
-        const perPage =
-            request.query['per_page'] ?? request.body['per_page'] ?? null;
-        if (
-            perPage &&
-            (isNaN(perPage) || perPage == 0 || perPage > apiConfig.max_per_page)
-        ) {
+        const perPage = request.query['per_page'] ?? request.body['per_page'] ?? null;
+        if (perPage && (isNaN(perPage) || perPage == 0 || perPage > apiConfig.max_per_page)) {
             return response.status(HTTP_STATUS_CODE.UNPROCESSABLE_ENTITY).json({
                 status: false,
-                message: 'per_page is invalid.',
+                message: 'per_page is invalid.'
             });
         }
         return next();
@@ -54,24 +42,20 @@ export abstract class Validator {
             }
         }
 
-        const errors = validationResult(this.request).formatWith((e) =>
-            this.errorFormatter(e),
-        );
+        const errors = validationResult(this.request).formatWith(e => this.errorFormatter(e));
         if (errors.isEmpty()) {
             return this.next();
         }
         if (this.resourceNotFound) {
             return this.response.status(HTTP_STATUS_CODE.NOT_FOUND).json({
                 status: false,
-                errors: Object.assign({}, ...errors.array()),
+                errors: Object.assign({}, ...errors.array())
             });
         }
-        return this.response
-            .status(HTTP_STATUS_CODE.UNPROCESSABLE_ENTITY)
-            .json({
-                status: false,
-                errors: Object.assign({}, ...errors.array()),
-            });
+        return this.response.status(HTTP_STATUS_CODE.UNPROCESSABLE_ENTITY).json({
+            status: false,
+            errors: Object.assign({}, ...errors.array())
+        });
     }
     private errorFormatter({ msg, param }: ValidationError): any {
         if (typeof msg === 'object') {

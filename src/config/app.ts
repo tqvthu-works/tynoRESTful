@@ -5,5 +5,5 @@ export const appConfig = {
     env: process.env.APP_ENV,
     lang: ['en'],
     providers: ['AppServiceProvider'],
-    webhook_host: process.env.WEBHOOKS_HOST,
+    webhook_host: process.env.WEBHOOKS_HOST
 };

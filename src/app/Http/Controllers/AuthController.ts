@@ -11,16 +11,10 @@ export class AuthController extends ApiController {
         super();
         this.service = service;
     }
-    public async register(
-        request: Request,
-        response: Response,
-    ): Promise<Response> {
+    public async register(request: Request, response: Response): Promise<Response> {
         return this.response(response, await this.service.register(request));
     }
-    public async login(
-        request: Request,
-        response: Response,
-    ): Promise<Response> {
+    public async login(request: Request, response: Response): Promise<Response> {
         return this.response(response, await this.service.login(request));
     }
 

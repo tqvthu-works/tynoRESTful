@@ -12,11 +12,11 @@ export default {
 
     shopify: {
         get_failed: 'Failed to get {{ attribute }}',
-        validate_failed: 'Failed to validate {{ attribute }}',
+        validate_failed: 'Failed to validate {{ attribute }}'
     },
     http: {
         not_found: 'route not found',
-        internal_error: 'internal server error',
+        internal_error: 'internal server error'
     },
-    credential_invalid: 'Invalid Credentials',
+    credential_invalid: 'Invalid Credentials'
 };
